@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#123b70">
+  <title>OC CHECK-IN | オープンキャンパス受付</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="https://apis.google.com/js/api.js" async defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./">
+      <span class="brand-mark">OC</span>
+      <span>
+        <strong>OC CHECK-IN</strong>
+        <small>OPEN CAMPUS RECEPTION</small>
+      </span>
+    </a>
+    <div class="account-area">
+      <span id="loginStatus" class="status-dot">未ログイン</span>
+      <button id="loginBtn" class="btn btn-light">Googleでログイン</button>
+      <button id="logoutBtn" class="btn btn-outline hidden">ログアウト</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <p class="eyebrow">OPEN CAMPUS MANAGEMENT</p>
+      <h1>オープンキャンパス受付</h1>
+      <p>参加者を検索して、来校状況を確認・登録できます。</p>
+    </section>
+
+    <section class="panel setup-panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">EVENT SETTINGS</p>
+          <h2>開催回・回答シート設定</h2>
+        </div>
+        <span class="tag">管理設定</span>
+      </div>
+
+      <label for="eventName">開催回・イベント名</label>
+      <input id="eventName" type="text" placeholder="例：10月24日（土）オープンキャンパス">
+
+      <label for="sheetUrl">今回の回答スプレッドシートURL</label>
+      <input id="sheetUrl" type="url"
+        placeholder="https://docs.google.com/spreadsheets/d/..."
+        autocomplete="off">
+
+      <div class="button-row">
+        <button id="loadSheetBtn" class="btn btn-primary">回答を読み込む</button>
+        <button id="clearSettingsBtn" class="btn btn-outline">入力をクリア</button>
+      </div>
+      <p class="help">
+        開催回ごとに回答シートのURLを変更してください。
+        読み込みにはGoogleログインが必要です。
+      </p>
+      <p id="sheetStatus" class="message" role="status">スプレッドシート未接続</p>
+    </section>
+
+    <section class="stats-grid">
+      <article class="stat-card">
+        <span>申込者数</span>
+        <strong id="totalCount">—</strong>
+        <small>名</small>
+      </article>
+      <article class="stat-card">
+        <span>来校済み</span>
+        <strong id="arrivedCount">—</strong>
+        <small>名</small>
+      </article>
+      <article class="stat-card">
+        <span>未到校</span>
+        <strong id="waitingCount">—</strong>
+        <small>名</small>
+      </article>
+    </section>
+
+    <section class="panel search-panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">PARTICIPANT SEARCH</p>
+          <h2>参加者を検索</h2>
+        </div>
+      </div>
+
+      <label for="searchInput">中学校名・お名前・フリガナ</label>
+      <div class="search-box">
+        <span aria-hidden="true">⌕</span>
+        <input id="searchInput" type="search"
+          placeholder="名前や中学校名を入力…" autocomplete="off">
+        <button id="clearSearchBtn" class="clear-search" aria-label="検索をクリア">×</button>
+      </div>
+      <div class="result-toolbar">
+        <span id="resultCount">回答を読み込んでください</span>
+        <button id="refreshBtn" class="btn btn-outline btn-small">再読み込み</button>
+      </div>
+      <div id="results" class="results">
+        <div class="empty-state">
+          <span class="empty-icon">⌕</span>
+          <h3>参加者を検索できます</h3>
+          <p>Googleにログインして、回答シートを読み込んでください。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="privacy-note">
+      <strong>個人情報の取り扱い</strong>
+      <p>
+        このサイトはGoogle Sheets APIを利用します。
+        公開リポジトリに生徒の情報、アクセストークン、秘密鍵を保存しないでください。
+        利用するGoogleアカウントには対象シートへのアクセス権が必要です。
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <span>OC CHECK-IN</span>
+    <span>OPEN CAMPUS RECEPTION SYSTEM</span>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
