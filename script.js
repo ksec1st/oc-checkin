@@ -6,7 +6,7 @@
 ===================================================== */
 
 // Google Cloud Consoleで作成したOAuthクライアントIDに変更する
-const GOOGLE_CLIENT_ID = "ここにOAuthクライアントID.apps.googleusercontent.com";
+const GOOGLE_CLIENT_ID = "974919799974-d866j4db02d8ifum919h51det026maf7.apps.googleusercontent.com";
 
 const SHEETS_SCOPE = "https://www.googleapis.com/auth/spreadsheets";
 const DISCOVERY_DOC =
